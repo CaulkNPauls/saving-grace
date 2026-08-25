@@ -1,69 +1,85 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import Section from "@/components/Section";
+import SectionHeading from "@/components/SectionHeading";
+import PortfolioGrid from "@/components/PortfolioGrid";
+import ServiceCard from "@/components/ServiceCard";
+import BookingSteps from "@/components/BookingSteps";
+import FAQAccordion from "@/components/FAQAccordion";
+import CTA from "@/components/CTA";
+import { tattoos } from "@/content/tattoos";
+import { about, bookingSteps, faqItems, servicesSection, tattooSection } from "@/content/site";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Hero />
+
+      <Section className="border-b border-bone/10">
+        <SectionHeading kicker={tattooSection.kicker} heading={tattooSection.heading} />
+        <p className="mt-6 max-w-xl font-serif text-lg text-parchment/90">{tattooSection.body}</p>
+        <div className="mt-10">
+          <PortfolioGrid items={tattoos} />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="mt-10">
+          <CTA href="/tattoos" variant="outline">
+            {tattooSection.cta}
+          </CTA>
         </div>
-      </main>
-    </div>
+      </Section>
+
+      <Section className="border-b border-bone/10">
+        <SectionHeading kicker={servicesSection.kicker} heading={servicesSection.heading} />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {servicesSection.services.map((serviceItem) => (
+            <ServiceCard key={serviceItem.name} {...serviceItem} />
+          ))}
+        </div>
+      </Section>
+
+      <Section className="border-b border-bone/10">
+        <SectionHeading kicker="How It Works" heading="Booking" align="center" />
+        <div className="mt-12">
+          <BookingSteps steps={bookingSteps} />
+        </div>
+        <div className="mt-12 text-center">
+          <CTA href="/booking">Start Your Request</CTA>
+        </div>
+      </Section>
+
+      <Section className="border-b border-bone/10">
+        <SectionHeading kicker="Good To Know" heading="FAQ" />
+        <div className="mt-10">
+          <FAQAccordion items={faqItems} />
+        </div>
+        <div className="mt-8">
+          <CTA href="/faq" variant="outline">
+            All Questions
+          </CTA>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="grid gap-10 sm:grid-cols-[minmax(0,220px)_1fr] sm:items-start">
+          <div className="aspect-[3/4] w-full max-w-[220px] border border-bone/10 bg-charcoal">
+            <div className="flex h-full w-full items-center justify-center p-4 text-center">
+              <span className="font-display text-xs uppercase tracking-widest text-metal">
+                Portrait coming soon
+              </span>
+            </div>
+          </div>
+          <div>
+            <SectionHeading kicker={about.kicker} heading={about.heading} />
+            <div className="mt-6 flex max-w-xl flex-col gap-4 font-serif text-lg text-parchment/90">
+              {about.bio.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <p className="mt-6 font-display text-sm uppercase tracking-widest text-oxblood-bright">
+              {about.signoff}
+            </p>
+          </div>
+        </div>
+      </Section>
+    </>
   );
 }
