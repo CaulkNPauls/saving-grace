@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function HairPage() {
   return (
-    <Section>
-      <SectionHeading kicker="Also By Grace" heading="Hair" />
-      <p className="mt-6 max-w-xl font-serif text-lg text-parchment/90">
+    <Section surface="paper">
+      <SectionHeading kicker="Also By Grace" heading="Hair" tone="ink" />
+      <p className="reveal mt-6 max-w-xl font-serif text-lg text-charcoal/85">
         Cutting, coloring, and styling — a second craft, practiced with the same care as the
         first. A full portfolio is coming soon.
       </p>

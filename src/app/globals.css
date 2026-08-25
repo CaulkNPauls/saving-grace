@@ -109,6 +109,70 @@ main {
   background: currentColor;
 }
 
+/**
+ * Paper system — aged parchment "pages" used to break up the dark ink
+ * chrome (header/footer/secondary sections). Each .paper section carries
+ * its own grain + vignette so nothing reads as one flat background image
+ * stretched across the site.
+ */
+.paper {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+}
+
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+.paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    130% 110% at 50% 40%,
+    transparent 55%,
+    rgba(10, 10, 10, 0.14) 100%
+  );
+}
+
+.paper > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* A slightly darker, more weathered paper variant for framed content. */
+.paper-deep {
+  background-color: var(--color-parchment);
+}
+
+.paper-deep::after {
+  background: radial-gradient(
+    130% 110% at 50% 35%,
+    transparent 45%,
+    rgba(10, 10, 10, 0.22) 100%
+  );
+}
+
+/* Plate framing for portfolio/portrait imagery — matted like a printed plate. */
+.plate {
+  background-color: var(--color-bone);
+  border: 1px solid rgba(10, 10, 10, 0.5);
+  box-shadow: 0 0 0 4px var(--color-parchment);
+}
+
 /* Editorial "reveal" — a slight fade/rise, restrained and quick. */
 @keyframes reveal {
   from {

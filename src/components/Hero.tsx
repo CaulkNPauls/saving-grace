@@ -4,33 +4,31 @@ import { hero, site } from "@/content/site";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-[90vh] flex-col items-center justify-center gap-8 border-b border-bone/10 px-6 py-24 text-center">
-      <p className="reveal font-display text-sm uppercase tracking-[0.5em] text-parchment">
-        {hero.eyebrow}
-      </p>
+    <section className="paper border-b-2 border-ink/80">
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 px-6 py-14 text-center sm:gap-6 sm:py-20">
+        <div className="reveal relative h-44 w-44 sm:h-64 sm:w-64">
+          <Image
+            src="/branding/saving-grace-logo-transparent.png"
+            alt={`${site.name} — blackwork jackalope with antlers logo`}
+            fill
+            priority
+            sizes="(min-width: 640px) 16rem, 10rem"
+            className="object-contain drop-shadow-[0_1px_0_rgba(10,10,10,0.15)]"
+          />
+        </div>
 
-      <div className="reveal relative h-52 w-52 sm:h-72 sm:w-72">
-        <Image
-          src="/branding/saving-grace-logo.png"
-          alt={`${site.name} — blackwork jackalope with antlers logo`}
-          fill
-          priority
-          sizes="(min-width: 640px) 18rem, 13rem"
-          className="object-contain"
-        />
+        <p className="reveal font-display text-base uppercase tracking-[0.35em] text-ink sm:text-xl">
+          {hero.headline}
+        </p>
+
+        <p className="reveal max-w-sm font-serif text-base italic text-charcoal sm:text-lg">
+          {hero.sub}
+        </p>
+
+        <CTA href="/booking" className="reveal mt-1">
+          {hero.cta}
+        </CTA>
       </div>
-
-      <h1 className="reveal font-display text-2xl uppercase tracking-[0.35em] text-bone sm:text-4xl">
-        {hero.headline}
-      </h1>
-
-      <p className="reveal max-w-md font-serif text-lg text-parchment/90 sm:text-xl">
-        {hero.sub}
-      </p>
-
-      <CTA href="/booking" className="reveal">
-        {hero.cta}
-      </CTA>
     </section>
   );
 }

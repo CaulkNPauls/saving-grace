@@ -15,7 +15,7 @@ export default function MobileNav() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 border border-bone/25"
+        className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5 border border-bone/25 bg-ink"
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         <span
@@ -35,32 +35,34 @@ export default function MobileNav() {
       <div
         id={panelId}
         hidden={!open}
-        className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink px-6 pb-10 pt-24"
+        className="paper fixed inset-0 z-40 flex flex-col overflow-y-auto"
       >
-        <nav className="flex flex-1 flex-col gap-6" aria-label="Mobile">
-          {primaryNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="font-display text-2xl uppercase tracking-wide text-bone"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex flex-1 flex-col px-6 pb-10 pt-24">
+          <nav className="flex flex-1 flex-col gap-1" aria-label="Mobile">
+            {primaryNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-ink/15 py-4 font-display text-2xl uppercase tracking-wide text-ink first:border-t"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <Link
-          href={bookNav.href}
-          onClick={() => setOpen(false)}
-          className="mt-8 flex items-center justify-center border border-oxblood-bright bg-oxblood px-5 py-4 font-sans text-base font-semibold uppercase tracking-wide text-bone"
-        >
-          {bookNav.label}
-        </Link>
+          <Link
+            href={bookNav.href}
+            onClick={() => setOpen(false)}
+            className="mt-8 flex items-center justify-center border border-oxblood bg-oxblood px-5 py-4 font-sans text-base font-semibold uppercase tracking-wide text-bone"
+          >
+            {bookNav.label} With Grace
+          </Link>
 
-        <p className="mt-6 text-center text-xs uppercase tracking-widest text-metal">
-          {site.name}
-        </p>
+          <p className="mt-6 text-center text-xs uppercase tracking-widest text-ink/50">
+            {site.name}
+          </p>
+        </div>
       </div>
     </div>
   );

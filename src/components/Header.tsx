@@ -5,10 +5,10 @@ import MobileNav from "./MobileNav";
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-bone/10 bg-ink/95 backdrop-blur supports-[backdrop-filter]:bg-ink/85">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
         <Link
           href="/"
-          className="font-display text-lg uppercase tracking-[0.2em] text-bone transition-colors hover:text-parchment"
+          className="font-display text-base uppercase tracking-[0.15em] text-bone transition-colors hover:text-parchment sm:text-lg sm:tracking-[0.2em]"
         >
           {site.name}
         </Link>

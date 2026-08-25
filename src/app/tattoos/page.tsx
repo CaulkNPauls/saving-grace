@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function TattoosPage() {
   return (
-    <Section>
-      <SectionHeading kicker="The Main Event" heading="Tattoos" />
-      <p className="mt-6 max-w-xl font-serif text-lg text-parchment/90">
+    <Section surface="paper">
+      <SectionHeading kicker="The Main Event" heading="Tattoos" tone="ink" />
+      <p className="reveal mt-6 max-w-xl font-serif text-lg text-charcoal/85">
         The full tattoo gallery is coming soon. In the meantime, here&apos;s a preview of what to
         expect — custom blackwork and fine-line pieces, designed by Grace.
       </p>

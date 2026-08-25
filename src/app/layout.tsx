@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Playfair_Display, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileBookBar from "@/components/MobileBookBar";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileBookBar />
       </body>
     </html>
   );

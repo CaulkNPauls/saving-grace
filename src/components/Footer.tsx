@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-bone/10 px-6 py-12 text-sm text-parchment/70 sm:px-8">
+    <footer className="border-t border-bone/10 px-6 pb-28 pt-12 text-sm text-parchment/70 sm:px-8 sm:pb-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="font-display text-lg uppercase tracking-[0.2em] text-bone">{site.name}</p>

@@ -12,13 +12,15 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <Section>
-      <SectionHeading kicker="Good To Know" heading="FAQ" />
+    <Section surface="paper-deep">
+      <SectionHeading kicker="The Fine Print" heading="Notes From Grace" tone="ink" />
       <div className="mt-10">
         <FAQAccordion items={faqItems} />
       </div>
       <div className="mt-10">
-        <CTA href="/booking">Book With Grace</CTA>
+        <CTA href="/booking" variant="outline-ink">
+          Book With Grace
+        </CTA>
       </div>
     </Section>
   );

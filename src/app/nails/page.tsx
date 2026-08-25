@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function NailsPage() {
   return (
-    <Section>
-      <SectionHeading kicker="Also By Grace" heading="Nails" />
-      <p className="mt-6 max-w-xl font-serif text-lg text-parchment/90">
+    <Section surface="paper">
+      <SectionHeading kicker="Also By Grace" heading="Nails" tone="ink" />
+      <p className="reveal mt-6 max-w-xl font-serif text-lg text-charcoal/85">
         Clean, considered nail work for clients who already trust Grace with everything else. A
         full portfolio is coming soon.
       </p>

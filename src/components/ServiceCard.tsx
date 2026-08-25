@@ -10,10 +10,12 @@ export default function ServiceCard({ name, description, href }: ServiceCardProp
   return (
     <Link
       href={href}
-      className="group flex flex-col justify-between border border-bone/10 bg-charcoal p-8 transition-colors hover:border-oxblood-bright/60 sm:p-10"
+      className="group reveal flex flex-col justify-between border border-bone/10 bg-charcoal p-6 transition-colors hover:border-oxblood-bright/60 sm:p-10"
     >
       <div>
-        <h3 className="font-display text-2xl uppercase tracking-wide text-bone">{name}</h3>
+        <h3 className="font-display text-xl uppercase tracking-wide text-bone sm:text-2xl">
+          {name}
+        </h3>
         <p className="mt-3 max-w-sm font-serif text-base text-parchment/85">{description}</p>
       </div>
       <span className="mt-8 inline-flex items-center gap-2 font-sans text-sm uppercase tracking-wide text-parchment/70 transition-colors group-hover:text-oxblood-bright">
