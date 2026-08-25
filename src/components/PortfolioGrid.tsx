@@ -9,8 +9,8 @@ export default function PortfolioGrid({ items }: PortfolioGridProps) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
       {items.map((item, index) => (
-        <figure key={item.image} className="plate reveal p-2 sm:p-2.5">
-          <div className="relative aspect-[4/5] overflow-hidden bg-charcoal">
+        <figure key={item.image} className="plate instant-print reveal">
+          <div className="instant-print-photo relative aspect-[3/4] overflow-hidden bg-charcoal">
             {item.placeholder ? (
               <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center">
                 <span className="font-display text-[0.65rem] uppercase tracking-widest text-metal">
@@ -27,7 +27,7 @@ export default function PortfolioGrid({ items }: PortfolioGridProps) {
               />
             )}
           </div>
-          <figcaption className="flex items-baseline justify-between gap-3 px-1 pt-2.5">
+          <figcaption className="instant-print-caption flex items-baseline justify-between gap-3">
             <span className="font-serif text-sm italic text-ink/80">
               {item.title ?? "Untitled piece"}
             </span>
