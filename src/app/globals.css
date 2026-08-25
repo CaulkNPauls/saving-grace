@@ -33,7 +33,7 @@
   --font-display: var(--font-cinzel);
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
-  --font-tattoo: var(--font-metal-mania);
+  --font-gothic: var(--font-unifraktur);
 }
 
 * {
@@ -79,16 +79,14 @@ label {
 .brand-mark {
   display: inline-block;
   color: var(--color-bone);
-  font-family: var(--font-tattoo), var(--font-display), serif;
-  font-size: 1.45rem;
+  font-family: var(--font-gothic), var(--font-display), serif;
+  font-size: 1.65rem;
   line-height: 1;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-  -webkit-text-stroke: 0.25px currentColor;
+  letter-spacing: 0.025em;
+  -webkit-text-stroke: 0.15px currentColor;
   text-shadow:
     1px 1px 0 rgba(122, 31, 38, 0.48),
     0 0 12px rgba(232, 225, 213, 0.08);
-  transform: skewX(-2deg);
   transition: color 160ms ease, text-shadow 160ms ease;
 }
 
@@ -99,8 +97,8 @@ label {
 
 @media (min-width: 640px) {
   .brand-mark {
-    font-size: 1.7rem;
-    letter-spacing: 0.09em;
+    font-size: 1.95rem;
+    letter-spacing: 0.035em;
   }
 }
 

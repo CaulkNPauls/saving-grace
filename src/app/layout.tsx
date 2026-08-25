@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Playfair_Display, Inter, Metal_Mania } from "next/font/google";
+import { Cinzel, Playfair_Display, Inter, UnifrakturCook } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBookBar from "@/components/MobileBookBar";
@@ -22,10 +22,10 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const metalMania = Metal_Mania({
-  variable: "--font-metal-mania",
+const unifraktur = UnifrakturCook({
+  variable: "--font-unifraktur",
   subsets: ["latin"],
-  weight: "400",
+  weight: "700",
 });
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${playfair.variable} ${inter.variable} ${metalMania.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${playfair.variable} ${inter.variable} ${unifraktur.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ink text-bone">
         <Header />
