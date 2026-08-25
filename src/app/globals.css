@@ -77,12 +77,24 @@ label {
 
 .document-shell {
   isolation: isolate;
-  width: calc(100% - 20px);
+  width: calc(100% - 24px);
   max-width: 1440px;
   margin-inline: auto;
   background-color: var(--color-parchment);
+  background-image:
+    linear-gradient(90deg, transparent 0 22%, rgba(79, 50, 28, 0.055) 23%, rgba(255, 245, 218, 0.08) 24%, transparent 26% 49%, rgba(68, 42, 24, 0.05) 50%, rgba(255, 247, 221, 0.06) 51%, transparent 53% 76%, rgba(71, 44, 25, 0.045) 77%, transparent 79%),
+    radial-gradient(ellipse at 7% 28%, rgba(94, 55, 28, 0.13), transparent 20%),
+    radial-gradient(ellipse at 92% 71%, rgba(85, 47, 25, 0.15), transparent 22%),
+    radial-gradient(circle at 14% 62%, rgba(74, 39, 20, 0.16) 0 1px, transparent 3px),
+    radial-gradient(circle at 84% 23%, rgba(63, 33, 18, 0.14) 0 1px, transparent 3px);
   color: var(--color-ink);
-  box-shadow: -7px 0 14px rgba(0, 0, 0, 0.75), 7px 0 14px rgba(0, 0, 0, 0.75), inset 10px 0 18px -15px rgba(31, 18, 11, 0.9), inset -11px 0 20px -16px rgba(10, 10, 10, 0.95);
+  box-shadow:
+    -9px 0 16px rgba(0, 0, 0, 0.82),
+    9px 0 16px rgba(0, 0, 0, 0.82),
+    inset 16px 0 24px -18px rgba(45, 25, 14, 0.95),
+    inset -17px 0 25px -18px rgba(31, 18, 11, 0.98),
+    inset 0 18px 24px -22px rgba(40, 23, 13, 0.9),
+    inset 0 -20px 27px -21px rgba(32, 18, 11, 0.95);
 }
 
 .document-shell::before,
@@ -95,14 +107,53 @@ label {
 }
 
 .document-shell::before {
-  opacity: 0.8;
-  background: radial-gradient(9px 15px at 0 4%, #0a0a0a 58%, transparent 64%), radial-gradient(5px 10px at 0 13%, #17100c 55%, transparent 65%), radial-gradient(11px 19px at 0 37%, #0a0a0a 55%, transparent 64%), radial-gradient(6px 13px at 0 72%, #24160f 52%, transparent 64%), radial-gradient(10px 17px at 100% 9%, #0a0a0a 56%, transparent 65%), radial-gradient(6px 12px at 100% 29%, #21150f 52%, transparent 65%), radial-gradient(12px 20px at 100% 61%, #0a0a0a 54%, transparent 64%), radial-gradient(7px 14px at 100% 88%, #1d120d 54%, transparent 65%);
+  opacity: 0.96;
+  background:
+    /* Angular splits interrupt the softer fibre bites. */
+    linear-gradient(137deg, #0a0a0a 0 49%, transparent 51%) 13% 0 / 21px 15px no-repeat,
+    linear-gradient(43deg, #0a0a0a 0 49%, transparent 51%) 31% 0 / 16px 12px no-repeat,
+    linear-gradient(132deg, #0a0a0a 0 49%, transparent 51%) 58% 0 / 24px 17px no-repeat,
+    linear-gradient(38deg, #0a0a0a 0 49%, transparent 51%) 82% 0 / 18px 14px no-repeat,
+    linear-gradient(315deg, #0a0a0a 0 49%, transparent 51%) 0 53% / 11px 20px no-repeat,
+    linear-gradient(225deg, #0a0a0a 0 49%, transparent 51%) 100% 76% / 12px 22px no-repeat,
+    /* Large missing bites along the top, like the supplied parchment. */
+    radial-gradient(34px 19px at 8% 0, #0a0a0a 60%, transparent 64%),
+    radial-gradient(22px 13px at 24% 0, #0a0a0a 58%, transparent 64%),
+    radial-gradient(44px 17px at 51% 0, #0a0a0a 59%, transparent 64%),
+    radial-gradient(27px 15px at 70% 0, #0a0a0a 58%, transparent 64%),
+    radial-gradient(39px 20px at 94% 0, #0a0a0a 60%, transparent 65%),
+    radial-gradient(9px 12px at 16% 0, #17100c 58%, transparent 66%),
+    radial-gradient(8px 10px at 61% 0, #17100c 56%, transparent 66%),
+    /* Smaller chips continue down both sides. */
+    radial-gradient(12px 20px at 0 7%, #0a0a0a 58%, transparent 64%),
+    radial-gradient(7px 13px at 0 19%, #17100c 55%, transparent 65%),
+    radial-gradient(14px 23px at 0 39%, #0a0a0a 55%, transparent 64%),
+    radial-gradient(8px 17px at 0 69%, #24160f 52%, transparent 64%),
+    radial-gradient(13px 21px at 0 94%, #0a0a0a 56%, transparent 64%),
+    radial-gradient(13px 22px at 100% 11%, #0a0a0a 56%, transparent 65%),
+    radial-gradient(8px 15px at 100% 31%, #21150f 52%, transparent 65%),
+    radial-gradient(15px 25px at 100% 59%, #0a0a0a 54%, transparent 64%),
+    radial-gradient(9px 18px at 100% 86%, #1d120d 54%, transparent 65%),
+    /* A restrained ragged lower edge. */
+    radial-gradient(26px 13px at 4% 100%, #0a0a0a 58%, transparent 65%),
+    radial-gradient(17px 9px at 37% 100%, #17100c 56%, transparent 65%),
+    radial-gradient(33px 14px at 73% 100%, #0a0a0a 58%, transparent 65%),
+    radial-gradient(22px 12px at 97% 100%, #0a0a0a 60%, transparent 66%);
 }
 
 .document-shell::after {
-  opacity: 0.68;
+  opacity: 0.78;
   mix-blend-mode: multiply;
-  background: radial-gradient(ellipse at 3% 1%, rgba(35, 19, 12, 0.75), transparent 13%), radial-gradient(ellipse at 98% 16%, rgba(15, 11, 9, 0.55), transparent 12%), radial-gradient(ellipse at 1% 68%, rgba(73, 42, 24, 0.45), transparent 10%), radial-gradient(ellipse at 94% 100%, rgba(27, 17, 12, 0.68), transparent 15%), linear-gradient(90deg, rgba(67, 40, 23, 0.34), transparent 2.5%, transparent 97%, rgba(28, 18, 13, 0.48));
+  background:
+    radial-gradient(ellipse at 5% 0, rgba(47, 25, 13, 0.88), transparent 15%),
+    radial-gradient(ellipse at 48% 0, rgba(73, 39, 18, 0.64), transparent 11%),
+    radial-gradient(ellipse at 96% 4%, rgba(35, 20, 12, 0.85), transparent 14%),
+    radial-gradient(ellipse at 100% 23%, rgba(56, 31, 17, 0.55), transparent 11%),
+    radial-gradient(ellipse at 1% 68%, rgba(73, 42, 24, 0.52), transparent 10%),
+    radial-gradient(ellipse at 91% 100%, rgba(37, 21, 12, 0.82), transparent 16%),
+    radial-gradient(circle at 8% 84%, rgba(67, 34, 17, 0.2) 0 3px, transparent 24px),
+    radial-gradient(circle at 89% 39%, rgba(75, 39, 19, 0.18) 0 2px, transparent 19px),
+    linear-gradient(90deg, rgba(67, 40, 23, 0.48), transparent 3.5%, transparent 96%, rgba(28, 18, 13, 0.58));
 }
 
 ::selection {
