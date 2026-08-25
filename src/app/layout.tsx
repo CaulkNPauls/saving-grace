@@ -23,14 +23,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Saving Grace — Tattoos, Hair & Nails",
+  title: "Saving Grace — Custom Tattoos",
   description:
-    "Saving Grace: custom tattoos, hair, and nails. Blackwork and fine-line tattoos by Grace, with hair and nail services by appointment.",
+    "Saving Grace: custom blackwork and fine-line tattoos designed by Grace.",
   metadataBase: new URL("https://savinggrace.ink"),
   openGraph: {
-    title: "Saving Grace — Tattoos, Hair & Nails",
+    title: "Saving Grace — Custom Tattoos",
     description:
-      "Custom tattoos, hair, and nails. Blackwork and fine-line tattoos by Grace.",
+      "Custom blackwork and fine-line tattoos designed by Grace.",
     siteName: "Saving Grace",
     type: "website",
   },

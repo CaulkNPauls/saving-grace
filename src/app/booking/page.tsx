@@ -5,7 +5,7 @@ import BookingFormShell from "@/components/BookingFormShell";
 
 export const metadata: Metadata = {
   title: "Book — Saving Grace",
-  description: "Request a tattoo, hair, or nail appointment with Saving Grace.",
+  description: "Request a custom tattoo appointment with Saving Grace.",
 };
 
 export default function BookingPage() {

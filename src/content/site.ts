@@ -1,8 +1,9 @@
 import type { BookingStep, FAQItem, NavLink } from "./types";
+import { serviceAvailability } from "./serviceAvailability";
 
 export const site = {
   name: "Saving Grace",
-  tagline: "Tattoos · Hair · Nails",
+  tagline: "Custom Tattoos by Grace",
   instagramHandle: "@saving.grace.tattoos",
   instagramUrl: "https://www.instagram.com/saving.grace.tattoos/",
   // No email has been provided yet — do not invent one.
@@ -10,20 +11,24 @@ export const site = {
   domain: "savinggrace.ink",
 };
 
-export const primaryNav: NavLink[] = [
+const allPrimaryNav: (NavLink & { service?: "hair" | "nails" })[] = [
   { label: "Tattoos", href: "/tattoos" },
-  { label: "Hair", href: "/hair" },
-  { label: "Nails", href: "/nails" },
+  { label: "Hair", href: "/hair", service: "hair" },
+  { label: "Nails", href: "/nails", service: "nails" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
 ];
+
+export const primaryNav: NavLink[] = allPrimaryNav.filter(
+  (item) => !item.service || serviceAvailability[item.service]
+);
 
 export const bookNav: NavLink = { label: "Book", href: "/booking" };
 
 export const hero = {
   eyebrow: "Saving Grace",
-  headline: "Tattoos · Hair · Nails",
-  sub: "Blackwork, custom design, and a steady hand — with hair and nails by appointment alongside it.",
+  headline: "Custom Tattoos",
+  sub: "Blackwork, fine linework, and custom designs drawn by Grace for the body that will wear them.",
   cta: "Book With Grace",
 };
 
@@ -50,6 +55,12 @@ export const servicesSection = {
     },
   ],
 };
+
+export const publicSecondaryServices = servicesSection.services.filter(
+  (service) =>
+    (service.href === "/hair" && serviceAvailability.hair) ||
+    (service.href === "/nails" && serviceAvailability.nails)
+);
 
 export const bookingSteps: BookingStep[] = [
   {

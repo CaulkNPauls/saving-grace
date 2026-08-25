@@ -8,7 +8,15 @@ import FAQAccordion from "@/components/FAQAccordion";
 import CTA from "@/components/CTA";
 import Divider from "@/components/Divider";
 import { tattoos } from "@/content/tattoos";
-import { about, bookingSteps, faqItems, servicesSection, tattooSection } from "@/content/site";
+import {
+  about,
+  bookingSteps,
+  faqItems,
+  publicSecondaryServices,
+  servicesSection,
+  tattooSection,
+} from "@/content/site";
+import { hasPublicSecondaryServices } from "@/content/serviceAvailability";
 
 export default function Home() {
   return (
@@ -39,14 +47,16 @@ export default function Home() {
         </div>
       </div>
 
-      <Section>
-        <SectionHeading kicker={servicesSection.kicker} heading={servicesSection.heading} />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {servicesSection.services.map((serviceItem) => (
-            <ServiceCard key={serviceItem.name} {...serviceItem} />
-          ))}
-        </div>
-      </Section>
+      {hasPublicSecondaryServices && (
+        <Section>
+          <SectionHeading kicker={servicesSection.kicker} heading={servicesSection.heading} />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {publicSecondaryServices.map((serviceItem) => (
+              <ServiceCard key={serviceItem.name} {...serviceItem} />
+            ))}
+          </div>
+        </Section>
+      )}
 
       <Section surface="paper">
         <SectionHeading kicker="How It Works" heading="Booking" align="center" tone="ink" />

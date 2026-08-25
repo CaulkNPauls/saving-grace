@@ -2,15 +2,23 @@
 
 import { useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode } from "react";
 import { bookingSuccess } from "@/content/site";
+import { serviceAvailability } from "@/content/serviceAvailability";
 
 type ServiceOption = "tattoo" | "hair" | "nails" | "consultation";
 
-const services: { value: ServiceOption; label: string }[] = [
+const allServices: { value: ServiceOption; label: string }[] = [
   { value: "tattoo", label: "Tattoo" },
   { value: "hair", label: "Hair" },
   { value: "nails", label: "Nails" },
-  { value: "consultation", label: "Consultation" },
+  { value: "consultation", label: "Tattoo Consultation" },
 ];
+
+const services = allServices.filter(
+  (service) =>
+    service.value === "tattoo" ||
+    (service.value === "hair" && serviceAvailability.hair) ||
+    (service.value === "nails" && serviceAvailability.nails)
+);
 
 const STEP_LABELS = ["Service", "About You", "Details", "Send"];
 const LAST_STEP = STEP_LABELS.length - 1;

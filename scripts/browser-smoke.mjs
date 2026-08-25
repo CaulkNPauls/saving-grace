@@ -86,7 +86,7 @@ const viewports = [
   [412, 915],
   [430, 932],
 ];
-const routes = ["/tattoos", "/hair", "/nails", "/about", "/faq", "/booking"];
+const routes = ["/tattoos", "/about", "/faq", "/booking"];
 
 for (let index = 0; index < viewports.length; index++) {
   const [width, height] = viewports[index];
@@ -131,7 +131,8 @@ assert(await evaluate('document.querySelector("details").open'), "FAQ did not op
 
 await navigate("/booking");
 assert(!(await evaluate('Boolean(document.querySelector("[data-mobile-book-bar]"))')), "Booking bar visible on booking route");
-await evaluate('document.querySelector("input[value=hair]").click(); document.querySelector("input[value=tattoo]").click()');
+assert(!(await evaluate('Boolean(document.querySelector("input[value=hair], input[value=nails]"))')), "Unavailable service shown in booking form");
+await evaluate('document.querySelector("input[value=consultation]").click(); document.querySelector("input[value=tattoo]").click()');
 await touchButton("Next");
 await touchButton("Next");
 assert((await evaluate('document.querySelector("input[name=name]").checkValidity()')) === false, "Blank validation did not run");
@@ -146,6 +147,12 @@ await evaluate('document.querySelectorAll("input[type=checkbox]").forEach((e)=>e
 assert(await evaluate('[...document.querySelectorAll("input[type=checkbox]")].every((e)=>e.checked)'), "Checkboxes did not remain checked");
 await touchButton("Send Request");
 assert((await evaluate("document.body.innerText.toLowerCase().includes('development preview only')")), `UI-only submit failed: ${await evaluate('document.body.innerText.slice(-500)')}`);
+
+for (const path of ["/hair", "/nails"]) {
+  await navigate(path);
+  assert(await evaluate('Boolean(document.querySelector("meta[name=robots][content*=noindex]"))'), `${path}: missing noindex`);
+  assert(await evaluate("document.body.innerText.includes('404')"), `${path}: did not return not-found UI`);
+}
 
 const summary = { viewports: [...viewports, [768, 900], [1280, 900]], routes, consoleErrors: consoleErrors.length };
 console.log(JSON.stringify(summary));

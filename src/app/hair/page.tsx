@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import CTA from "@/components/CTA";
 import { hair } from "@/content/hair";
+import { serviceAvailability } from "@/content/serviceAvailability";
 
 export const metadata: Metadata = {
   title: "Hair — Saving Grace",
@@ -11,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function HairPage() {
+  if (!serviceAvailability.hair) notFound();
+
   return (
     <Section surface="paper">
       <SectionHeading kicker="Also By Grace" heading="Hair" tone="ink" />
