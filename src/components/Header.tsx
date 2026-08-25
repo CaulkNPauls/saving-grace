@@ -8,7 +8,8 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
         <Link
           href="/"
-          className="font-display text-base uppercase tracking-[0.15em] text-bone transition-colors hover:text-parchment sm:text-lg sm:tracking-[0.2em]"
+          aria-label="Saving Grace — Home"
+          className="brand-mark"
         >
           {site.name}
         </Link>
