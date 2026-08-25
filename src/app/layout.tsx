@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-ink text-bone">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="document-shell flex-1">{children}</main>
         <Footer />
         <MobileBookBar />
       </body>

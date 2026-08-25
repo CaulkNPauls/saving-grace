@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function BookingPage() {
   return (
-    <Section>
-      <SectionHeading kicker="Book" heading="Request an Appointment" align="center" />
+    <Section surface="paper-deep">
+      <SectionHeading kicker="Book" heading="Request an Appointment" align="center" tone="ink" />
       <div className="mt-12">
         <BookingFormShell />
       </div>

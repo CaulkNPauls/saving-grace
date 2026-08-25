@@ -4,7 +4,7 @@ import { hero, site } from "@/content/site";
 
 export default function Hero() {
   return (
-    <section className="paper border-b-2 border-ink/80">
+    <section className="paper document-hero border-b-2 border-ink/70">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 px-6 py-14 text-center sm:gap-6 sm:py-20">
         <div className="reveal relative h-44 w-44 sm:h-64 sm:w-64">
           <Image
@@ -13,7 +13,7 @@ export default function Hero() {
             fill
             priority
             sizes="(min-width: 640px) 16rem, 10rem"
-            className="object-contain drop-shadow-[0_1px_0_rgba(10,10,10,0.15)]"
+            className="object-contain mix-blend-multiply opacity-95"
           />
         </div>
 

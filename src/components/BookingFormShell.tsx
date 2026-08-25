@@ -90,7 +90,7 @@ export default function BookingFormShell() {
       ref={formRef}
       onSubmit={handleSubmit}
       onKeyDown={handleKeyDown}
-      className="mx-auto flex max-w-2xl flex-col gap-8"
+      className="booking-form mx-auto flex max-w-2xl flex-col gap-8 p-5 sm:p-8"
       noValidate
     >
       <div>

@@ -4,7 +4,7 @@ import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-bone/10 bg-ink/95 backdrop-blur supports-[backdrop-filter]:bg-ink/85">
+    <header className="sticky top-0 z-40 border-b border-bone/15 bg-ink">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
         <Link
           href="/"
