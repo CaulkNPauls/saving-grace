@@ -77,10 +77,10 @@ label {
 
 .document-shell {
   isolation: isolate;
-  width: calc(100% - 12px);
+  width: calc(100% - 18px);
   max-width: 1440px;
   margin-inline: auto;
-  padding: 52px 28px 46px;
+  padding: 38px 24px 36px;
   background: transparent;
   color: var(--color-ink);
   filter: drop-shadow(-5px 0 7px rgba(0, 0, 0, 0.65)) drop-shadow(5px 0 7px rgba(0, 0, 0, 0.65));
@@ -97,19 +97,19 @@ label {
 
 .document-shell::before {
   inset: 0;
-  border: 52px solid transparent;
-  border-width: 58px 34px 52px;
-  background-color: #d1b27e;
+  border: 32px solid transparent;
+  border-width: 34px 24px 32px;
+  background-color: #eadbb8;
   background-clip: padding-box;
   border-image-source: url("/textures/tattered-parchment.webp");
-  border-image-slice: 155;
-  border-image-width: 58px 34px 52px;
+  border-image-slice: 105;
+  border-image-width: 34px 24px 32px;
   border-image-repeat: stretch;
 }
 
 .document-shell::after {
   inset: 2.5% 3%;
-  opacity: 0.18;
+  opacity: 0.08;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.28'/%3E%3C/svg%3E");
 }
@@ -117,6 +117,11 @@ label {
 .document-shell > * {
   position: relative;
   z-index: 1;
+}
+
+.document-shell .paper::before,
+.document-shell .paper::after {
+  display: none;
 }
 
 ::selection {
@@ -234,7 +239,7 @@ body[data-mobile-menu-open="true"] [data-mobile-book-bar] {
 @media (min-width: 768px) {
   .document-shell {
     width: calc(100% - 40px);
-    padding: 70px 54px 64px;
+    padding: 48px 44px 46px;
   }
 }
 
