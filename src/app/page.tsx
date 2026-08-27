@@ -7,6 +7,7 @@ import BookingSteps from "@/components/BookingSteps";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTA from "@/components/CTA";
 import Divider from "@/components/Divider";
+import ArtistPortrait from "@/components/ArtistPortrait";
 import { tattoos } from "@/content/tattoos";
 import {
   about,
@@ -85,13 +86,7 @@ export default function Home() {
 
       <Section surface="paper">
         <div className="grid gap-8 sm:grid-cols-[minmax(0,200px)_1fr] sm:items-start sm:gap-10">
-          <div className="plate mx-auto w-full max-w-[220px] p-2 sm:mx-0">
-            <div className="flex aspect-[3/4] w-full items-center justify-center bg-charcoal p-4 text-center">
-              <span className="font-display text-xs uppercase tracking-widest text-metal">
-                Portrait coming soon
-              </span>
-            </div>
-          </div>
+          <ArtistPortrait />
           <div>
             <SectionHeading kicker={about.kicker} heading={about.heading} tone="ink" />
             <div className="mt-6 flex max-w-xl flex-col gap-4 font-serif text-lg text-charcoal/85">

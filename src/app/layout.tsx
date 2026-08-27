@@ -31,12 +31,12 @@ const unifraktur = UnifrakturCook({
 export const metadata: Metadata = {
   title: "Saving Grace — Custom Tattoos",
   description:
-    "Saving Grace: custom blackwork and fine-line tattoos designed by Grace.",
+    "Bold custom tattoos and blackwork designed by Grace in North Tonawanda, New York.",
   metadataBase: new URL("https://savinggrace.ink"),
   openGraph: {
     title: "Saving Grace — Custom Tattoos",
     description:
-      "Custom blackwork and fine-line tattoos designed by Grace.",
+      "Bold custom tattoos and blackwork designed by Grace in North Tonawanda, New York.",
     siteName: "Saving Grace",
     type: "website",
   },

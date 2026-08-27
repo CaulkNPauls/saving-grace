@@ -6,8 +6,13 @@ export const site = {
   tagline: "Custom Tattoos by Grace",
   instagramHandle: "@saving.grace.tattoos",
   instagramUrl: "https://www.instagram.com/saving.grace.tattoos/",
-  // No email has been provided yet — do not invent one.
-  email: null as string | null,
+  email: "saving.grace.booking@gmail.com",
+  studio: {
+    name: "Red Carpet Ink",
+    street: "26 Webster Street",
+    city: "North Tonawanda, NY 14120",
+    detail: "Upper Unit",
+  },
   domain: "savinggrace.ink",
 };
 
@@ -28,14 +33,14 @@ export const bookNav: NavLink = { label: "Book", href: "/booking" };
 export const hero = {
   eyebrow: "Saving Grace",
   headline: "Custom Tattoos",
-  sub: "Blackwork, fine linework, and custom designs drawn by Grace for the body that will wear them.",
+  sub: "Bold blackwork and custom designs drawn by Grace for the body that will wear them.",
   cta: "Book With Grace",
 };
 
 export const tattooSection = {
   kicker: "The Main Event",
   heading: "Tattoos",
-  body: "Custom blackwork and fine linework, designed by Grace for the body that will wear it. Every piece starts as a conversation.",
+  body: "Bold custom work, designed by Grace for the body that will wear it. Every piece starts as a conversation.",
   cta: "View the Work",
 };
 
@@ -94,7 +99,7 @@ export const faqItems: FAQItem[] = [
   {
     question: "How far in advance should I book?",
     answer:
-      "Availability generally runs Thursday through Saturday. Placeholder — exact booking windows and lead times will be confirmed here.",
+      "Grace generally books Thursday through Saturday. Send your preferred dates through the booking form, and she will follow up with current availability.",
   },
   {
     question: "Will I see my design before the appointment?",
@@ -117,8 +122,8 @@ export const about = {
   kicker: "About",
   heading: "Grace",
   bio: [
-    "Placeholder biography — Grace's story, background, and approach to her craft will go here.",
-    "This space is meant to sound like her: informal, personal, a little irreverent. Not a corporate bio.",
+    "Grace is the artist behind Saving Grace, creating bold custom tattoos for the person who will wear them.",
+    "Every piece begins with a conversation. Grace draws each design herself, shaping the idea around your placement, references, and what feels right on your body.",
   ],
   signoff: "— Your Saving Grace",
 };

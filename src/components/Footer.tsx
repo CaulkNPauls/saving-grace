@@ -35,7 +35,20 @@ export default function Footer() {
 
         <div className="flex flex-col gap-2">
           <p className="mb-1 font-sans text-xs uppercase tracking-widest text-metal">Studio</p>
-          <p>Location details coming soon.</p>
+          <address className="flex flex-col gap-1 not-italic">
+            <span className="text-bone">{site.studio.name}</span>
+            <span>{site.studio.street}</span>
+            <span>{site.studio.city}</span>
+            <span>{site.studio.detail}</span>
+          </address>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Red+Carpet+Ink+26+Webster+Street+North+Tonawanda+NY+14120"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 transition-colors hover:text-oxblood-bright"
+          >
+            Get directions
+          </a>
         </div>
       </div>
 

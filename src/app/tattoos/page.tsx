@@ -7,7 +7,7 @@ import { tattoos } from "@/content/tattoos";
 
 export const metadata: Metadata = {
   title: "Tattoos — Saving Grace",
-  description: "Custom blackwork and fine-line tattoos by Grace at Saving Grace.",
+  description: "Bold custom tattoos and blackwork by Grace at Saving Grace.",
 };
 
 export default function TattoosPage() {
@@ -15,8 +15,8 @@ export default function TattoosPage() {
     <Section surface="paper">
       <SectionHeading kicker="The Main Event" heading="Tattoos" tone="ink" />
       <p className="reveal mt-6 max-w-xl font-serif text-lg text-charcoal/85">
-        The full tattoo gallery is coming soon. In the meantime, here&apos;s a preview of what to
-        expect — custom blackwork and fine-line pieces, designed by Grace.
+        Bold blackwork and custom tattoos, drawn by Grace for the person who will wear them.
+        New work will be added here as the portfolio is updated.
       </p>
       <div className="mt-10">
         <PortfolioGrid items={tattoos} />

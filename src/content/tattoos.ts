@@ -17,7 +17,7 @@ export const tattoos: PortfolioItem[] = [
     image: "/work/tattoos/placeholder-2.jpg",
     alt: "Tattoo portfolio placeholder — image coming soon",
     category: "tattoo",
-    title: "Fine line piece",
+    title: "Bold piece",
     placeholder: true,
   },
   {

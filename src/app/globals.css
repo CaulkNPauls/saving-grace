@@ -95,10 +95,49 @@ label {
   text-shadow: 1px 1px 0 var(--color-oxblood-bright);
 }
 
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  width: auto;
+  transition: opacity 160ms ease;
+}
+
+.brand-lockup:hover {
+  opacity: 0.82;
+}
+
+.brand-lockup-bunny {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.brand-lockup-wordmark {
+  width: auto;
+  height: 18px;
+  object-fit: contain;
+}
+
 @media (min-width: 640px) {
   .brand-mark {
     font-size: 1.95rem;
     letter-spacing: 0.035em;
+  }
+
+  .brand-lockup {
+    width: auto;
+  }
+
+  .brand-lockup-bunny {
+    width: 49px;
+    height: 49px;
+  }
+
+  .brand-lockup-wordmark {
+    width: auto;
+    height: 26px;
   }
 }
 
@@ -126,19 +165,14 @@ label {
   inset: 0;
   border: 32px solid transparent;
   border-width: 34px 24px 32px;
-  background-color: #eadbb8;
-  background-clip: padding-box;
   border-image-source: url("/textures/tattered-parchment.webp");
-  border-image-slice: 105;
+  border-image-slice: 105 fill;
   border-image-width: 34px 24px 32px;
   border-image-repeat: stretch;
 }
 
 .document-shell::after {
-  inset: 2.5% 3%;
-  opacity: 0.08;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.28'/%3E%3C/svg%3E");
+  display: none;
 }
 
 .document-shell > * {

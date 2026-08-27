@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { bookNav, primaryNav, site } from "@/content/site";
+import { bookNav, primaryNav } from "@/content/site";
 import MobileNav from "./MobileNav";
 
 export default function Header() {
@@ -9,9 +10,25 @@ export default function Header() {
         <Link
           href="/"
           aria-label="Saving Grace — Home"
-          className="brand-mark"
+          className="brand-lockup"
         >
-          {site.name}
+          <Image
+            src="/branding/saving-grace-bunny-head.png?v=original"
+            alt=""
+            width={64}
+            height={64}
+            priority
+            unoptimized
+            className="brand-lockup-bunny"
+          />
+          <Image
+            src="/branding/saving-grace-wordmark.png"
+            alt="Saving Grace"
+            width={561}
+            height={69}
+            priority
+            className="brand-lockup-wordmark"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">

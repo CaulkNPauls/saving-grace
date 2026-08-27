@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
 import CTA from "@/components/CTA";
+import ArtistPortrait from "@/components/ArtistPortrait";
 import { about } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -12,14 +13,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <Section surface="paper">
-      <div className="grid gap-8 sm:grid-cols-[minmax(0,240px)_1fr] sm:items-start sm:gap-10">
-        <div className="plate mx-auto w-full max-w-[240px] p-2 sm:mx-0">
-          <div className="flex aspect-[3/4] w-full items-center justify-center bg-charcoal p-4 text-center">
-            <span className="font-display text-xs uppercase tracking-widest text-metal">
-              Portrait coming soon
-            </span>
-          </div>
-        </div>
+      <div className="grid gap-8 sm:grid-cols-[minmax(0,200px)_1fr] sm:items-start sm:gap-10">
+        <ArtistPortrait />
         <div>
           <SectionHeading kicker={about.kicker} heading={about.heading} tone="ink" />
           <div className="mt-6 flex max-w-xl flex-col gap-4 font-serif text-lg text-charcoal/85">
