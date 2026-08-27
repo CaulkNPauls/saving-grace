@@ -13,7 +13,7 @@ export default function Section({ children, className = "", id, surface }: Secti
 
   return (
     <section id={id} className={surfaceClass}>
-      <div className={`mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-20 lg:py-28 ${className}`}>
+      <div className={`mx-auto max-w-6xl px-4 py-14 sm:px-8 sm:py-20 lg:py-28 ${className}`}>
         {children}
       </div>
     </section>

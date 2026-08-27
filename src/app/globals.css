@@ -152,6 +152,19 @@ label {
   filter: drop-shadow(-5px 0 7px rgba(0, 0, 0, 0.65)) drop-shadow(5px 0 7px rgba(0, 0, 0, 0.65));
 }
 
+@media (max-width: 639px) {
+  .document-shell {
+    width: calc(100% - 8px);
+    padding: 24px 10px 28px;
+    filter: drop-shadow(-2px 0 4px rgba(0, 0, 0, 0.5)) drop-shadow(2px 0 4px rgba(0, 0, 0, 0.5));
+  }
+
+  .document-shell::before {
+    border-width: 22px 10px 22px;
+    border-image-width: 22px 10px 22px;
+  }
+}
+
 .document-shell::before,
 .document-shell::after {
   content: "";
