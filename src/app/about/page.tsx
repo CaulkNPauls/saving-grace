@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
 import CTA from "@/components/CTA";
-import ArtistPortrait from "@/components/ArtistPortrait";
+import AboutGallery from "@/components/AboutGallery";
 import { about } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function AboutPage() {
   return (
     <Section surface="paper">
       <div className="grid gap-8 sm:grid-cols-[minmax(0,200px)_1fr] sm:items-start sm:gap-10">
-        <ArtistPortrait />
+        <AboutGallery />
         <div>
           <SectionHeading kicker={about.kicker} heading={about.heading} tone="ink" />
           <div className="mt-6 flex max-w-xl flex-col gap-4 font-serif text-lg text-charcoal/85">

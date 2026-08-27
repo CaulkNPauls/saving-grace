@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
-import PortfolioGrid from "@/components/PortfolioGrid";
+import TattoosGallery from "@/components/TattoosGallery";
 import CTA from "@/components/CTA";
-import { tattoos } from "@/content/tattoos";
+import { getVisibleTattoos } from "@/lib/data/tattoos";
 
 export const metadata: Metadata = {
   title: "Tattoos — Saving Grace",
   description: "Bold custom tattoos and blackwork by Grace at Saving Grace.",
 };
 
-export default function TattoosPage() {
+export default async function TattoosPage() {
+  const tattoos = await getVisibleTattoos();
+
   return (
     <Section surface="paper">
       <SectionHeading kicker="The Main Event" heading="Tattoos" tone="ink" />
@@ -19,7 +21,7 @@ export default function TattoosPage() {
         New work will be added here as the portfolio is updated.
       </p>
       <div className="mt-10">
-        <PortfolioGrid items={tattoos} />
+        <TattoosGallery items={tattoos} />
       </div>
       <div className="mt-10">
         <CTA href="/booking">Book With Grace</CTA>

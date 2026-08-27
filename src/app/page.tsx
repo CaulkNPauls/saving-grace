@@ -8,7 +8,8 @@ import FAQAccordion from "@/components/FAQAccordion";
 import CTA from "@/components/CTA";
 import Divider from "@/components/Divider";
 import ArtistPortrait from "@/components/ArtistPortrait";
-import { tattoos } from "@/content/tattoos";
+import FlashBookSection from "@/components/FlashBook/FlashBookSection";
+import { getFeaturedTattoos } from "@/lib/data/tattoos";
 import {
   about,
   bookingSteps,
@@ -19,7 +20,9 @@ import {
 } from "@/content/site";
 import { hasPublicSecondaryServices } from "@/content/serviceAvailability";
 
-export default function Home() {
+export default async function Home() {
+  const featuredTattoos = await getFeaturedTattoos();
+
   return (
     <>
       <Hero />
@@ -30,14 +33,16 @@ export default function Home() {
           {tattooSection.body}
         </p>
         <div className="mt-10">
-          <PortfolioGrid items={tattoos} />
+          <PortfolioGrid items={featuredTattoos} />
         </div>
         <div className="mt-10">
           <CTA href="/tattoos" variant="outline-ink">
-            {tattooSection.cta}
+            See All My Work
           </CTA>
         </div>
       </Section>
+
+      <FlashBookSection />
 
       <div className="border-y border-oxblood-bright/30 bg-ink px-6 py-10 text-center sm:py-12">
         <p className="font-display text-lg uppercase tracking-[0.25em] text-bone sm:text-xl">

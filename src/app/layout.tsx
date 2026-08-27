@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Playfair_Display, Inter, UnifrakturCook } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import MobileBookBar from "@/components/MobileBookBar";
+import ChromeGate from "@/components/ChromeGate";
+import { FlashSelectionProvider } from "@/lib/flashSelection";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -49,10 +48,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${cinzel.variable} ${playfair.variable} ${inter.variable} ${unifraktur.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ink text-bone">
-        <Header />
-        <main className="document-shell flex-1">{children}</main>
-        <Footer />
-        <MobileBookBar />
+        <FlashSelectionProvider>
+          <ChromeGate>{children}</ChromeGate>
+        </FlashSelectionProvider>
       </body>
     </html>
   );

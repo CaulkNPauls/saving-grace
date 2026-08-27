@@ -5,12 +5,11 @@ export default function ArtistPortrait() {
     <figure className="plate instant-print mx-auto w-full max-w-[220px] sm:mx-0">
       <div className="instant-print-photo relative aspect-[3/4] w-full overflow-hidden bg-charcoal">
         <Image
-          src="/branding/saving-grace-bunny-head.png?v=portrait"
-          alt="Saving Grace jackalope mark"
+          src="/about/grace-portrait-1.jpg"
+          alt="Grace, the artist behind Saving Grace"
           fill
-          unoptimized
           sizes="220px"
-          className="object-contain p-5"
+          className="object-cover"
         />
       </div>
       <figcaption className="instant-print-caption flex items-baseline justify-between gap-3">

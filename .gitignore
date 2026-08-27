@@ -32,9 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
+
+# raw client-provided source photos (not for web use — see public/ for processed versions)
+/source-assets
 
 # typescript
 *.tsbuildinfo
