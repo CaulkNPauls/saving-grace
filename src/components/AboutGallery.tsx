@@ -20,21 +20,21 @@ const photos = [
 
 export default function AboutGallery() {
   return (
-    <div className="grid grid-cols-2 gap-5 sm:grid-cols-1">
+    <div className="grid grid-cols-3 items-start gap-2.5 sm:gap-5 lg:gap-7">
       {photos.map((photo) => (
-        <figure key={photo.image} className="plate instant-print reveal first:col-span-2 sm:first:col-span-1">
+        <figure key={photo.image} className="plate instant-print reveal min-w-0">
           <div className="instant-print-photo relative aspect-[3/4] w-full overflow-hidden bg-charcoal">
             <Image
               src={photo.image}
               alt={photo.alt}
               fill
-              sizes="(min-width: 640px) 200px, 50vw"
+              sizes="(min-width: 1024px) 350px, 33vw"
               className="object-cover"
             />
           </div>
-          <figcaption className="instant-print-caption flex items-baseline justify-between gap-3">
-            <span className="font-serif text-sm italic text-ink/80">{photo.caption}</span>
-            <span className="shrink-0 font-sans text-[0.65rem] uppercase tracking-widest text-ink/40">
+          <figcaption className="instant-print-caption flex min-w-0 items-baseline justify-between gap-1 sm:gap-3">
+            <span className="truncate font-serif text-[0.65rem] italic text-ink/80 sm:text-sm">{photo.caption}</span>
+            <span className="hidden shrink-0 font-sans text-[0.65rem] uppercase tracking-widest text-ink/40 sm:inline">
               Artist
             </span>
           </figcaption>
