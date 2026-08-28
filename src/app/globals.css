@@ -579,7 +579,10 @@ body[data-mobile-menu-open="true"] [data-mobile-book-bar] {
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-columns: repeat(2, 1fr);
+  /* minmax(0, 1fr), not a bare 1fr — otherwise a grid track won't shrink
+     below its content's intrinsic min-width, letting the caption text push
+     the whole card past its column and "bleed" over the page edge. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(var(--flash-page-rows, 3), 1fr);
   gap: 0.5rem;
   padding: 0.85rem;
@@ -590,7 +593,12 @@ body[data-mobile-menu-open="true"] [data-mobile-book-bar] {
   display: flex;
   height: 100%;
   min-height: 0;
+  min-width: 0;
   flex-direction: column;
+  /* Thinner matte than the portfolio grid's plates — on a small mobile
+     card a 13px border ate a huge share of the width; this keeps the
+     framing without hiding the artwork underneath it. */
+  padding: 5px 5px 0;
 }
 
 .flash-page-inner .instant-print-photo {
@@ -602,10 +610,18 @@ body[data-mobile-menu-open="true"] [data-mobile-book-bar] {
 .flash-page-inner .instant-print-caption {
   min-height: 0;
   max-height: 2.4em;
+  min-width: 0;
   flex-shrink: 0;
   overflow: hidden;
-  padding: 0.3rem 0.25rem;
+  padding: 0.3rem 0.15rem;
   line-height: 1.15;
+}
+
+.flash-page-inner .instant-print-caption span {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .flash-page-inner .instant-print:nth-child(odd) {

@@ -8,8 +8,8 @@ import { useFlashSelection } from "@/lib/flashSelection";
 
 const FORM_ID = "262337631264052";
 
-function flashNote(title: string | null, id: number, imageUrl: string) {
-  return `Flash design selected: "${title ?? "Untitled flash"}" (Flash #${id})\nReference image: ${imageUrl}\n\n`;
+function flashNote(title: string | null) {
+  return `Flash design selected: "${title ?? "Untitled flash"}"\n\nDesired placement: `;
 }
 
 export default function BookingFormShell() {
@@ -134,9 +134,9 @@ export default function BookingFormShell() {
             label="Describe your tattoo idea and desired placement"
             name="q6_q6_textarea4"
             required
-            defaultValue={selectedFlash ? flashNote(selectedFlash.title, selectedFlash.id, selectedFlash.imageUrl) : undefined}
+            defaultValue={selectedFlash ? flashNote(selectedFlash.title) : undefined}
           />
-          <Field label="Preferred dates and times" name="q7_q7_textbox5" required />
+          <Field label="Preferred date & time" name="q7_q7_textbox5" type="datetime-local" required />
           <label className="flex min-w-0 flex-col gap-2">
             <span className="font-sans text-xs uppercase tracking-wide text-metal">Reference images {selectedFlash ? "" : "(optional)"}</span>
             <input
@@ -166,7 +166,22 @@ export default function BookingFormShell() {
 }
 
 function Field({ label, name, type = "text", autoComplete, required = false }: { label: string; name: string; type?: string; autoComplete?: string; required?: boolean }) {
-  return <label className="flex min-w-0 flex-col gap-2"><span className="font-sans text-xs uppercase tracking-wide text-metal">{label}{required && <span className="text-oxblood-bright"> *</span>}</span><input type={type} name={name} autoComplete={autoComplete} required={required} className="w-full min-w-0 max-w-full border border-bone/20 bg-charcoal px-4 py-3 font-sans text-bone" /></label>;
+  return (
+    <label className="flex min-w-0 flex-col gap-2">
+      <span className="font-sans text-xs uppercase tracking-wide text-metal">
+        {label}
+        {required && <span className="text-oxblood-bright"> *</span>}
+      </span>
+      <input
+        type={type}
+        name={name}
+        autoComplete={autoComplete}
+        required={required}
+        style={type === "datetime-local" ? { colorScheme: "dark" } : undefined}
+        className="w-full min-w-0 max-w-full border border-bone/20 bg-charcoal px-4 py-3 font-sans text-bone"
+      />
+    </label>
+  );
 }
 
 function TextArea({ label, name, required = false, defaultValue }: { label: string; name: string; required?: boolean; defaultValue?: string }) {

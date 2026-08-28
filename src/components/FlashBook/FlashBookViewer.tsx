@@ -290,11 +290,11 @@ function FlashPiece({ item, onSelect }: { item: FlashPublicItem; onSelect: () =>
             alt={item.title ?? "Flash design"}
             fill
             sizes="(min-width: 640px) 200px, 45vw"
-            className="object-contain p-1"
+            className="object-contain"
           />
         </div>
         <figcaption className="instant-print-caption flex items-center justify-center">
-          <span className="font-sans text-[0.6rem] uppercase tracking-widest text-ink/50">
+          <span className="font-sans text-[0.6rem] uppercase tracking-wide text-ink/50">
             Size &amp; Price — Soon
           </span>
         </figcaption>
