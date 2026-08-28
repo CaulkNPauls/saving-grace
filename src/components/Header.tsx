@@ -7,7 +7,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-bone/15 bg-ink">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
-        <Link
+        {/* Deliberately force a document navigation: client transitions from
+            database-backed pages can fail on older mobile browser sessions. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a
           href="/"
           aria-label="Saving Grace — Home"
           className="brand-lockup"
@@ -29,7 +32,7 @@ export default function Header() {
             priority
             className="brand-lockup-wordmark"
           />
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
           {primaryNav.map((item) => (
