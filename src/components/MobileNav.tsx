@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import Link from "next/link";
 import { bookNav, primaryNav, site } from "@/content/site";
 
@@ -106,6 +105,7 @@ export default function MobileNav() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
+        aria-label={open ? "Close menu" : "Open menu"}
         className="relative z-50 flex h-11 w-11 touch-manipulation flex-col items-center justify-center gap-1.5 border border-bone/35 bg-ink"
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
@@ -122,7 +122,7 @@ export default function MobileNav() {
           className={`block h-px w-5 bg-bone transition-transform ${open ? "-translate-y-[6px] -rotate-45" : ""}`}
         />
       </button>
-      {typeof document !== "undefined" && createPortal(menu, document.body)}
+      {menu}
     </div>
   );
 }
