@@ -20,6 +20,11 @@ import {
 } from "@/content/site";
 import { hasPublicSecondaryServices } from "@/content/serviceAvailability";
 
+// Reads admin-editable content from the database on every request — must not
+// be statically generated at build time (Vercel's build step has no reliable
+// path to the DB, unlike a running server function).
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const featuredTattoos = await getFeaturedTattoos();
 
