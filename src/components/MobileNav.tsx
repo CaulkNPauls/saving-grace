@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import Link from "next/link";
 import { bookNav, primaryNav, site } from "@/content/site";
+
+const mobileNav = [{ label: "Home", href: "/" }, ...primaryNav];
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -56,43 +57,53 @@ export default function MobileNav() {
       aria-label="Site navigation"
       className="mobile-nav-panel paper fixed inset-0 z-[100] flex min-h-svh flex-col overflow-y-auto overscroll-contain"
     >
-      <div className="flex min-h-full flex-1 flex-col px-6 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))]">
-        <div className="flex items-center justify-between border-b border-ink/25 pb-4">
-          <span className="font-display text-sm uppercase tracking-[0.2em] text-ink">{site.name}</span>
+      <div className="mx-auto flex min-h-full w-full max-w-lg flex-1 flex-col px-6 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))]">
+        <div className="flex items-start justify-between border-b border-ink/25 pb-5">
+          <div>
+            <span className="font-sans text-[0.65rem] uppercase tracking-[0.35em] text-oxblood">Navigation</span>
+            <p className="mt-1 font-gothic text-3xl leading-none text-ink">{site.name}</p>
+          </div>
           <button
             ref={closeRef}
             type="button"
             onClick={() => setOpen(false)}
-            className="flex min-h-11 min-w-11 items-center justify-center border border-ink/40 bg-parchment font-sans text-2xl leading-none text-ink"
+            aria-label="Close menu"
+            className="flex min-h-11 min-w-11 items-center justify-center border border-ink/35 bg-parchment/70 font-sans text-2xl leading-none text-ink shadow-sm transition-colors active:bg-ink active:text-bone"
           >
             <span aria-hidden="true">&times;</span>
             <span className="sr-only">Close menu</span>
           </button>
         </div>
 
-        <nav className="mt-8 flex flex-1 flex-col" aria-label="Mobile">
-          {primaryNav.map((item, index) => (
-            <Link
+        <nav className="mt-7 flex flex-1 flex-col" aria-label="Mobile">
+          {mobileNav.map((item, index) => (
+            <a
               key={item.href}
               href={item.href}
-              onClick={() => setOpen(false)}
-              className="flex min-h-14 items-center justify-between border-b border-ink/20 py-3 font-display text-2xl uppercase tracking-wide text-ink first:border-t"
+              className="group flex min-h-16 items-center justify-between border-b border-ink/20 px-1 py-3 first:border-t active:bg-ink/5"
             >
-              {item.label}
-              <span aria-hidden="true" className="font-sans text-xs text-oxblood">
+              <span className="font-display text-[1.35rem] uppercase tracking-[0.12em] text-ink">{item.label}</span>
+              <span aria-hidden="true" className="flex items-center gap-3 font-sans text-[0.65rem] tracking-widest text-oxblood">
                 {String(index + 1).padStart(2, "0")}
+                <span className="text-base transition-transform group-hover:translate-x-1">&#8594;</span>
               </span>
-            </Link>
+            </a>
           ))}
         </nav>
 
-        <Link
+        <div aria-hidden="true" className="my-6 flex items-center gap-3 text-oxblood/60">
+          <span className="h-px flex-1 bg-current" />
+          <span className="text-xs">&#9670;</span>
+          <span className="h-px flex-1 bg-current" />
+        </div>
+
+        <a
           href={bookNav.href}
-          onClick={() => setOpen(false)}
-          className="mt-8 flex min-h-12 items-center justify-center border border-oxblood bg-oxblood px-5 py-4 font-sans text-base font-semibold uppercase tracking-wide text-bone"
+          className="flex min-h-14 items-center justify-center border border-oxblood-bright bg-oxblood px-5 py-4 font-sans text-sm font-semibold uppercase tracking-[0.16em] text-bone shadow-[4px_4px_0_rgba(29,18,11,0.25)] active:translate-x-px active:translate-y-px active:shadow-none"
         >
           {bookNav.label} With Grace
-        </Link>
+        </a>
+        <p className="mt-4 text-center font-serif text-xs italic text-ink/55">Custom tattoos in North Tonawanda, New York</p>
       </div>
     </div>
   ) : null;
