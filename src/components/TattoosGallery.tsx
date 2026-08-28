@@ -9,8 +9,9 @@ type TattoosGalleryProps = {
 };
 
 export default function TattoosGallery({ items }: TattoosGalleryProps) {
-  const [tab, setTab] = useState<"featured" | "all">("featured");
   const featured = items.filter((item) => item.featured);
+  const hasFeatured = featured.length > 0;
+  const [tab, setTab] = useState<"featured" | "all">(hasFeatured ? "featured" : "all");
   const visible = tab === "featured" ? featured : items;
 
   return (
@@ -18,7 +19,7 @@ export default function TattoosGallery({ items }: TattoosGalleryProps) {
       <div className="reveal flex gap-6 border-b-2 border-dashed border-ink/25">
         {(
           [
-            { key: "featured", label: "Featured" },
+            ...(hasFeatured ? [{ key: "featured", label: "Featured" } as const] : []),
             { key: "all", label: "All Work" },
           ] as const
         ).map((option) => (

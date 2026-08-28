@@ -19,7 +19,11 @@ export async function getFeaturedTattoos(): Promise<PortfolioItem[]> {
     .from(tattooItems)
     .where(eq(tattooItems.visible, true))
     .orderBy(asc(tattooItems.sortOrder));
-  return rows.filter((row) => row.featured).map(toPortfolioItem);
+  const featured = rows.filter((row) => row.featured);
+
+  // A fresh CMS import may not have any items marked featured yet. Keep the
+  // homepage visual instead of rendering an empty portfolio in that state.
+  return (featured.length > 0 ? featured : rows.slice(0, 6)).map(toPortfolioItem);
 }
 
 export async function getVisibleTattoos(): Promise<PortfolioItem[]> {
