@@ -1,6 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
@@ -34,6 +42,46 @@ interface PageFlipInstance {
 
 type FlipEvent = { data: number };
 
+const TAP_MOVEMENT_LIMIT = 10;
+
+function useTapGesture(onTap: () => void) {
+  const startRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
+  const suppressClickRef = useRef(false);
+
+  return {
+    onPointerDown(event: ReactPointerEvent<HTMLElement>) {
+      if (event.pointerType !== "touch" || !event.isPrimary) return;
+      startRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    },
+    onPointerCancel() {
+      startRef.current = null;
+      suppressClickRef.current = true;
+    },
+    onPointerUp(event: ReactPointerEvent<HTMLElement>) {
+      if (event.pointerType !== "touch") return;
+      const start = startRef.current;
+      startRef.current = null;
+      suppressClickRef.current = true;
+      if (!start || start.pointerId !== event.pointerId || !event.isPrimary) return;
+
+      const distance = Math.hypot(event.clientX - start.x, event.clientY - start.y);
+      if (distance <= TAP_MOVEMENT_LIMIT) {
+        event.stopPropagation();
+        onTap();
+      }
+    },
+    onClick(event: ReactMouseEvent<HTMLElement>) {
+      if (suppressClickRef.current) {
+        suppressClickRef.current = false;
+        event.preventDefault();
+        return;
+      }
+      event.stopPropagation();
+      onTap();
+    },
+  };
+}
+
 export default function FlashBookViewer({ items }: { items: FlashPublicItem[] }) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const itemsPerPage = useFlashItemsPerPage();
@@ -44,6 +92,8 @@ export default function FlashBookViewer({ items }: { items: FlashPublicItem[] })
   const pageRows = itemsPerPage / 2;
   const totalLeaves = pages.length + 2; // cover + content pages + closing page
   const isOpen = currentPage > 0;
+  const openCoverGesture = useTapGesture(openBook);
+  const closeCoverGesture = useTapGesture(closeBook);
 
   // Re-pagination (e.g. rotating the phone, resizing a window) changes how
   // many leaves exist, which can strand the current page index — snap back
@@ -151,16 +201,7 @@ export default function FlashBookViewer({ items }: { items: FlashPublicItem[] })
             role="button"
             tabIndex={0}
             aria-label="Open the Saving Grace flash book"
-            onClick={(event) => {
-              event.stopPropagation();
-              openBook();
-            }}
-            onPointerUp={(event) => {
-              if (event.pointerType === "touch") {
-                event.stopPropagation();
-                openBook();
-              }
-            }}
+            {...openCoverGesture}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
@@ -193,16 +234,7 @@ export default function FlashBookViewer({ items }: { items: FlashPublicItem[] })
             role="button"
             tabIndex={0}
             aria-label="Close the Saving Grace flash book"
-            onClick={(event) => {
-              event.stopPropagation();
-              closeBook();
-            }}
-            onPointerUp={(event) => {
-              if (event.pointerType === "touch") {
-                event.stopPropagation();
-                closeBook();
-              }
-            }}
+            {...closeCoverGesture}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
@@ -256,6 +288,7 @@ export default function FlashBookViewer({ items }: { items: FlashPublicItem[] })
 function FlashPiece({ item, onSelect }: { item: FlashPublicItem; onSelect: () => void }) {
   const { selectedFlash } = useFlashSelection();
   const isTornOut = selectedFlash?.id === item.id;
+  const tapGesture = useTapGesture(onSelect);
 
   if (isTornOut) {
     return (
@@ -268,18 +301,7 @@ function FlashPiece({ item, onSelect }: { item: FlashPublicItem; onSelect: () =>
   return (
     <button
       type="button"
-      onClick={(event) => {
-        event.stopPropagation();
-        onSelect();
-      }}
-      onPointerUp={(event) => {
-        // page-flip's own touch handling swallows the synthetic "click" that
-        // would normally follow a tap on nested content, so handle touch here.
-        if (event.pointerType === "touch") {
-          event.stopPropagation();
-          onSelect();
-        }
-      }}
+      {...tapGesture}
       className="flash-piece-button"
       aria-label={item.available ? `View ${item.title ?? "this flash design"}` : `${item.title ?? "This flash design"} — claimed`}
     >

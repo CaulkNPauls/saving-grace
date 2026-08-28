@@ -26,8 +26,13 @@ export function useFlashItemsPerPage(): number {
       setItemsPerPage(computeItemsPerPage());
     }
     sync();
-    window.addEventListener("resize", sync);
-    return () => window.removeEventListener("resize", sync);
+
+    // Mobile browsers fire resize repeatedly while the user pinch-zooms.
+    // Rebuilding a page-flip instance in the middle of that gesture can leave
+    // its internal page index invalid. Pagination only needs to change when
+    // the device orientation changes, not when the visual viewport zooms.
+    window.addEventListener("orientationchange", sync);
+    return () => window.removeEventListener("orientationchange", sync);
   }, []);
 
   return itemsPerPage;
